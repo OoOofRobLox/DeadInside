@@ -10,7 +10,7 @@
   
  Ссылка на trello: [ProjectAllNewRater](https://trello.com/fnkdev_)
  
- Ссылка на miro: [ProjectAllNewRater](https://miro.com/app/board/o9J_lNx6Lkw=/)
+ Ссылка на miro: [ProjectAllNewRater](https://miro.com/app/board/o9J_lRuhSRs=/)
  
   Документация:
  
