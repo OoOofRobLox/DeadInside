@@ -14,7 +14,7 @@
  
   Документация:
  
-[ТЗ.pdf](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/ТЗ.pdf) 
+[Тестовое задание.pdf](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/ТЗ.pdf) 
 
 [ТЗ(правленое).pdf](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/TZ(правленное).pdf)
 
