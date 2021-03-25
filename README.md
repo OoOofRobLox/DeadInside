@@ -16,6 +16,6 @@
  
 [ТЗ.pdf](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/ТЗ.pdf) 
 
-[ТЗ(правленое)](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/TZ(правленное).pdf)
+[ТЗ(правленое).pdf](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/TZ(правленное).pdf)
 
 [Курсовая.pdf](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/%D0%9A%D1%83%D1%80%D1%81%D0%B0%D1%87.pdf)
