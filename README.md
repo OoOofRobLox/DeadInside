@@ -15,3 +15,4 @@
   Документация:
  
 [ТЗ.pdf](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/ТЗ.pdf) 
+[Курсовая.pdf]
