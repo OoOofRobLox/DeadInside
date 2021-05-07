@@ -18,4 +18,6 @@
 
 [ТЗ(правленное)](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/TZ(правленное).pdf)
 
-[Курсовая работа](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/Курсовой%20проект.pdf)
+[Курсовая работа](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/Курсовой%20проект(май).pdf)
+
+[Распределение ролей]()
