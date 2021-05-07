@@ -17,10 +17,8 @@ def role():
 @app.route('/role', methods=['POST'])
 def add_role():
     name = request.form.get('name')
-    value = request.form.get('value')
     role = Role(
         name=name,
-        value=value
     )
     db.session.add(role)
     db.session.commit()
@@ -30,19 +28,15 @@ def add_role():
 @app.route('/delete-role', methods=['POST'])
 def delete_role():
     role_id = request.form.get('role_id')
-    try:
-        role = Role.query.filter(Role.id == role_id).first()
-        db.session.delete(role)
-        db.session.commit()
-    except Exception:
-        flash('Невозможно удалть город.')
-        return redirect(url_for('role'))
+    role = Role.query.filter(Role.id == role_id).first()
+    db.session.delete(role)
+    db.session.commit()
     return redirect(url_for('role'))
 
 
 @app.route('/change-role', methods=['POST'])
 def change_role():
     role_id = request.form.get('role_id')
-    Role.query.filter(Role.id == role_id).update({'name': request.form.get('name'), 'value': request.form.get('value')})
+    Role.query.filter(Role.id == role_id).update({'name': request.form.get('name')})
     db.session.commit()
     return redirect(url_for('role'))

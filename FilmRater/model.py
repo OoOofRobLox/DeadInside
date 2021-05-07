@@ -13,13 +13,15 @@ user_movie = db.Table('user_movie',
                       )
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.String(255), unique=False, nullable=False)
     nickname = db.Column(db.String(255), unique=True, nullable=False)
     src = db.Column(db.String(1023), unique=False, nullable=False, default=DEFAULT_PROFILE_IMAGE)
+    registration_date = db.Column(db.TIMESTAMP, unique=False, nullable=False)
+    active = db.Column(db.Boolean, unique=False, nullable=False, default=False)
 
     city_id = db.Column(db.Integer, db.ForeignKey('city.id'), nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
@@ -27,6 +29,9 @@ class User(db.Model):
     comments = db.relationship('Commentary', backref='user', lazy=True)
     movies = db.relationship('Movie', secondary=user_movie, lazy=False, backref=db.backref('umovies', lazy=True))
     criteriaMovies = db.relationship('CriteriaMovie', backref='cmusers', lazy=True)
+
+    def is_active(self):
+        return self.active
 
 
 class City(db.Model):
@@ -41,7 +46,6 @@ class Role(db.Model):
     __tablename__ = "role"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=False, nullable=False)
-    value = db.Column(db.Integer, unique=False, nullable=False)
 
     users = db.relationship('User', backref='role', lazy=True)
 
@@ -53,7 +57,7 @@ class Movie(db.Model):
     description = db.Column(db.String(1000), unique=False, nullable=False)
     generalRating = db.Column(db.Integer, unique=False, nullable=False)
     length = db.Column(db.Integer, unique=False, nullable=False)
-    #src = db.Column(db.String(1023), unique=False, nullable=False, default=DEFAULT_PROFILE_IMAGE)
+    src = db.Column(db.String(1023), unique=False, nullable=False, default=DEFAULT_PROFILE_IMAGE)
     isFavorite = db.Column(db.Boolean, unique=False, nullable=False)
 
     genres = db.relationship('Genre', secondary=genre_movie, lazy=False, backref=db.backref('genres', lazy=True))

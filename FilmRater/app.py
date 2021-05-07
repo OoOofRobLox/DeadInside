@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
@@ -31,11 +31,12 @@ from model import *
 
 from routes.location import city
 from routes.user import user, role, commentary
-from routes.movie import criteria, genre, criteriamovie
+from routes.movie import criteria, genre, criteriamovie, movie
+from routes.security import registration, login, logout
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return
 
 @login_manager.user_loader
 def load_user(user_id):
