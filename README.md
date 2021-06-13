@@ -13,10 +13,9 @@
  Ссылка на miro: [ProjectAllNewRater](https://miro.com/app/board/o9J_lRuhSRs=/)
  
   Документация:
- 
-[ТЗ](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/ТЗ.pdf) 
+  
 
-[ТЗ(правленное)](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/TZ(правленное).pdf)
+[ТЗ](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/TZ(правленное).pdf)
 
 [Курсовая работа](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/Курсовой%20проект(май).pdf)
 
