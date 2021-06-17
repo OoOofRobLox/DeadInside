@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
@@ -10,8 +10,8 @@ app.jinja_env.trim_blocks = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:1@localhost:5432/Rater'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'hsdkfjhsdjhadjkyuewyhfuehmndkhasjfhuiesdjvhasjdf'
-UPLOAD_FOLDER = 'static/image/uploads'
-UPLOAD_FOLDER_FOR_SOLUTIONS = 'static/files'
+UPLOAD_FOLDER = 'static/image'
+UPLOAD_FOLDER_FOR_SOLUTIONS = 'static'
 DEFAULT_PROFILE_IMAGE = 'defaultProfile.png'
 ALLOWED_PROFILE_IMAGE_EXTENSIONS = {'jpeg', 'jpg', 'gif', 'tiff', 'png', 'bmp', 'svg', 'WebP', 'pdf', 'docx'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -29,9 +29,14 @@ mail = Mail(app)
 
 from model import *
 
+from routes.location import city
+from routes.user import user, role, commentary, unlogUnregPage, startpage, userCommentary, adminLibrary, library, userAccount
+from routes.movie import criteria, genre, criteriamovie, movie
+from routes.security import registration, login, logout
+
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return redirect('unlogged')
 
 @login_manager.user_loader
 def load_user(user_id):
