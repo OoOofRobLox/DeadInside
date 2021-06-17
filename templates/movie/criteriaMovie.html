@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">FilmRater</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ url_for('startpage') }}">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ url_for('library') }}">Библиотека</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ url_for('logout') }}">Выйти</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class=" p-3 mb-2 bg-info text-black container">
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning mt-3" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <form action="{{ url_for('add_criteriamovie') }}" method="POST">
+        <div>
+            <label>criteria++movie</label>
+            <label>Пользователь</label>
+            <input type="text" class="form-control" list="datalistOptions" name="user_name">
+            <datalist id="datalistOptions">
+                {% for user in users %}
+                    <option value="{{ user.nickname }}">
+                {% endfor %}
+            </datalist>
+            <label>Фильм</label>
+            <input type="text" class="form-control" list="datalistOptions1" name="movie_name">
+            <datalist id="datalistOptions1">
+                {% for movie in movies %}
+                    <option value="{{ movie.name }}">
+                {% endfor %}
+            </datalist>
+            <label>Критерий</label>
+            <input type="text" class="form-control" list="datalistOptions2" name="criteria_name">
+            <datalist id="datalistOptions2">
+                {% for criteria in crit %}
+                    <option value="{{ criteria.name }}">
+                {% endfor %}
+            </datalist>
+            <label>Оценка</label>
+            <input type="text" class="form-control" name="evaluation">
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Добавить</button>
+    </form>
+
+    <table class="table table-borderless" >
+        <thead>
+        <tr>
+            <th scope="col">user</th>
+            <th scope="col">movie</th>
+            <th scope="col">criteria</th>
+            <th scope="col">eval</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cm in crMov %}
+            <tr>
+                <form method="post" action="{{ url_for('change_criteriamovie') }}">
+                    <td>
+                        <input value="{{ cm.cmusers.nickname }}" name="user_name">
+                    </td>
+                    <td>
+                        <input value="{{ cm.cmovies.name }}" name="movie_name">
+                    </td>
+                    <td>
+                        <input value="{{ cm.critrias.name }}" name="criteria_name">
+                    </td>
+                    <td>
+                        <input type="text" value="{{ cm.evaluation }}" name="evaluation">
+                        <input type="hidden" value="{{ cm.id }}" name="criteriamovie_id">
+                        <button type="submit" class="btn btn-primary mb-3">Изменить</button>
+                    </td>
+                </form>
+                <td>
+                    <form method="post" action="{{ url_for('delete_criteriamovie') }}">
+                        <input type="hidden" value="{{ cm.id }}" name="criteriamovie_id">
+                        <button type="submit" class="btn btn-primary mb-3">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        >
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</body>
+</html>

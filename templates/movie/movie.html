@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">FilmRater</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('startpage') }}">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('library') }}">Библиотека</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('logout') }}">Выйти</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class=" p-3 mb-2 bg-info text-black container">
+    <form method="post" action="{{ url_for('add_movie') }}">
+        <label>Название</label>
+        <input type="text" class="form-control" name="name">
+        <label>Рейтинг</label>
+        <input type="text" class="form-control" name="generalRating">
+        <label>Описание</label>
+        <input type="text" class="form-control" name="description">
+        <label>Продолжительность</label>
+        <input class="form-control" name="length">
+        <label>Изображение</label>
+        <input class="form-control" name="src">
+        <h2>Genres:</h2>
+        {% for genre in genres %}
+            <div>
+                {% if genre in movies.genres %}
+                    <input class="form-check-input" type="checkbox"
+                           id="gcb{{ genre.id }}"
+                           value="{{ genre.id }}" name="gcb{{ genre.id }}" checked>
+                    <label class="form-check-label" for="gcb{{ genre.id }}">
+                        {{ genre.name }}
+                    </label>
+                {% else %}
+                    <input class="form-check-input" type="checkbox"
+                           id="gcb{{ genre.id }}"
+                           value="{{ genre.id }}" name="gcb{{ genre.id }}">
+                    <label class="form-check-label" for="gcb{{ genre.id }}">
+                        {{ genre.name }}
+                    </label>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <td>
+            <button type="submit" class="btn btn-primary mb-3">Добавить</button>
+        </td>
+    </form>
+    <table class="table table-borderless">
+        <thead>
+        <tr>
+            <th scope="col">Название</th>
+            <th scope="col">Рейтинг</th>
+            <th scope="col">Описание</th>
+            <th scope="col">Продолжительность</th>
+            <th scope="col">Изображение</th>
+            <th scope="col">Жанры</th>
+            <th scope="col">Удалить</th>
+            <th scope="col">Перейти</th>
+
+        </tr>
+        </thead>
+        {% for movie in movies %}
+            <tbody>
+            <tr>
+                <td>
+                    <input type="text" class="form-control" value="{{ movie.name }}" name="name">
+                </td>
+                <td>
+                    <input type="text" class="form-control" value="{{ movie.generalRating }}" name="generalRating">
+                </td>
+                <td>
+                    <input type="text" class="form-control" value="{{ movie.description }}" name="description">
+                </td>
+                <td>
+                    <input type="text" class="form-control" value="{{ movie.length }}" name="length">
+                </td>
+                <td>
+                    <img src="{{ movie.src }}" name="src">
+                </td>
+                <td>
+                    {% for genre in genres %}
+                        {% if genre in movie.genres %}
+                            <label>
+                                {{ genre.name }}
+                            </label>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    <form method="post" action="{{ url_for('delete_movie') }}">
+                        <input type="hidden" value="{{ movie.id }}" name="movie_id">
+                        <button type="submit" class="btn btn-primary mb-3">Удалить</button>
+                    </form>
+                </td>
+                <td>
+                    <input type="hidden" value="{{ movie.id }}" name="movie_id">
+                    <a href="{{ url_for('show_movie', movie_id=movie.id) }}">
+                        <button type="submit" class="btn btn-primary mb-3">Перейти</button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</body>
+</html>
