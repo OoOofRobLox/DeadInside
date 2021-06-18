@@ -20,3 +20,6 @@
 [Курсовая работа](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/Курсовой%20проект(май).pdf)
 
 [Распределение ролей](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/Распределение%20ролей.pdf)
+
+
+[Видео-обзор](https://youtu.be/GGR26atLh40)
