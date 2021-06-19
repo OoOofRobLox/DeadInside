@@ -14,9 +14,14 @@
  
   Документация:
   
-
 [ТЗ](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/TZ(правленное).pdf)
 
-[Курсовая работа](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/Курсовой%20проект(май).pdf)
-
 [Распределение ролей](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/Распределение%20ролей.pdf)
+
+[Курсовая работа](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/Курсовой%20проект(июнь).pdf)
+
+[Презентация](https://github.com/OoOofRobLox/FilmRater/blob/main/Docs/FilmRater.pptx)
+
+[Видео-обзор](https://youtu.be/GGR26atLh40)
+
+[Сайт проекта](https://allnewfilmrater.herokuapp.com)
