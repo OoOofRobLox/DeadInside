@@ -25,3 +25,5 @@
 [Видео-обзор](https://youtu.be/GGR26atLh40)
 
 [Сайт проекта](https://allnewfilmrater.herokuapp.com)
+
+[Видео-презентация проекта](https://youtu.be/rtvsC3Oshlg)
